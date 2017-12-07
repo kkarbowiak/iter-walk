@@ -26,7 +26,7 @@ namespace iter
                             {
                             }
 
-                            typename Container::reference operator*() const
+                            typename Container::iterator::reference operator*() const
                             {
                                 return *m_current;
                             }
