@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include <set>
 #include <iostream>
 
 #include "iterWalk.h"
@@ -21,9 +22,11 @@ int main()
     std::vector<float> fvec = {.3, .5, .7, .8, .9};
     std::vector<std::string> svec = {"one", "two", "three", "four", "five"};
     std::list<int> ilis = {8, 7, 6, 5, 4};
-
+    std::set<int> iset = {2, 4, 6, 8, 9};
+    
     do_walk(ivec);
     do_walk(fvec);
     do_walk(svec);
     do_walk(ilis);
+    do_walk(iset);
 }
