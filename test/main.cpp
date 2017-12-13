@@ -32,10 +32,12 @@ int main()
     std::vector<std::string> svec = {"one", "two", "three", "four", "five"};
     std::list<int> ilis = {8, 7, 6, 5, 4};
     std::set<int> iset = {2, 4, 6, 8, 9};
+    std::vector<bool> bvec = {true, false, false, true, true};
 
     do_walk(ivec);
     do_walk(fvec);
     do_walk(svec);
     do_walk(ilis);
     do_walk(iset);
+    do_walk(bvec);
 }
