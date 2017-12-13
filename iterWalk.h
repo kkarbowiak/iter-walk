@@ -8,7 +8,7 @@
 
 namespace iter
 {
-    template<class Container>
+    template<class Iterator, class Size>
     class walker
     {
         public:
@@ -18,7 +18,7 @@ namespace iter
                     class walk_proxy
                     {
                         public:
-                            walk_proxy(typename Container::iterator first, typename Container::iterator last, typename Container::iterator current, typename Container::size_type index)
+                            walk_proxy(Iterator first, Iterator last, Iterator current, Size index)
                                 : m_first(first)
                                 , m_last(last)
                                 , m_current(current)
@@ -26,7 +26,7 @@ namespace iter
                             {
                             }
 
-                            typename Container::iterator::reference operator*() const
+                            typename Iterator::reference operator*() const
                             {
                                 return *m_current;
                             }
@@ -43,20 +43,20 @@ namespace iter
                                 return (next == m_last);
                             }
 
-                            typename Container::size_type get_index() const
+                            Size get_index() const
                             {
                                 return m_index;
                             }
 
                         private:
-                            typename Container::iterator m_first;
-                            typename Container::iterator m_last;
-                            typename Container::iterator m_current;
-                            typename Container::size_type m_index;
+                            Iterator m_first;
+                            Iterator m_last;
+                            Iterator m_current;
+                            Size m_index;
                     };
 
                 public:
-                    walk_iterator(typename Container::iterator first, typename Container::iterator last)
+                    walk_iterator(Iterator first, Iterator last)
                         : m_first(first)
                         , m_last(last)
                         , m_current(first)
@@ -83,36 +83,44 @@ namespace iter
                     }
 
                 private:
-                    typename Container::iterator m_first;
-                    typename Container::iterator m_last;
-                    typename Container::iterator m_current;
-                    typename Container::size_type m_index;
+                    Iterator m_first;
+                    Iterator m_last;
+                    Iterator m_current;
+                    Size m_index;
             };
 
         public:
-            explicit walker(Container & container)
-                : m_container(container)
+            walker(Iterator first, Iterator last)
+                : m_first(first)
+                , m_last(last)
             {
             }
 
             walk_iterator begin() const
             {
-                return walk_iterator(m_container.begin(), m_container.end());
+                return walk_iterator(m_first, m_last);
             }
 
             walk_iterator end() const
             {
-                return walk_iterator(m_container.end(), m_container.end());
+                return walk_iterator(m_last, m_last);
             }
 
         private:
-            Container & m_container;
+            Iterator m_first;
+            Iterator m_last;
     };
 
-    template<class Container>
-    walker<Container> walk(Container & container)
+    template<class Iterator, class Size>
+    walker<Iterator, Size> walk(Iterator first, Iterator last, Size /* unused */)
     {
-        return walker<Container>(container);
+        return walker<Iterator, Size>(first, last);
+    }
+
+    template<class Container>
+    auto walk(Container & container) -> decltype(walk(container.begin(), container.end(), container.size()))
+    {
+        return walk(container.begin(), container.end(), container.size());
     }
 }
 
