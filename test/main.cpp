@@ -8,6 +8,15 @@
 
 
 template<class C>
+void do_walk(C const & c)
+{
+    for (auto i : iter::walk(c))
+    {
+        std::cout << "first: " << i.is_first() << ", last: " << i.is_last() << ", index: " << i.get_index() << ", value: " << *i << '\n';
+    }
+}
+
+template<class C>
 void do_walk(C & c)
 {
     for (auto i : iter::walk(c))
@@ -23,7 +32,7 @@ int main()
     std::vector<std::string> svec = {"one", "two", "three", "four", "five"};
     std::list<int> ilis = {8, 7, 6, 5, 4};
     std::set<int> iset = {2, 4, 6, 8, 9};
-    
+
     do_walk(ivec);
     do_walk(fvec);
     do_walk(svec);
