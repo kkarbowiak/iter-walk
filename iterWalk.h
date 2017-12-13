@@ -5,6 +5,8 @@
 #ifndef ITER_WALK_H
 #define ITER_WALK_H
 
+#include <iterator>
+
 
 namespace iter
 {
@@ -38,9 +40,7 @@ namespace iter
 
                             bool is_last() const
                             {
-                                auto next = m_current;
-                                ++next;
-                                return (next == m_last);
+                                return (std::next(m_current) == m_last);
                             }
 
                             Size get_index() const
