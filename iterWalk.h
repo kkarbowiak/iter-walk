@@ -118,9 +118,9 @@ namespace iter
     }
 
     template<class Container>
-    auto walk(Container & container) -> decltype(walk(container.begin(), container.end(), container.size()))
+    auto walk(Container & container) -> decltype(walk(std::begin(container), std::end(container), container.size()))
     {
-        return walk(container.begin(), container.end(), container.size());
+        return walk(std::begin(container), std::end(container), container.size());
     }
 }
 
