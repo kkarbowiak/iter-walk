@@ -75,4 +75,18 @@ TEST_CASE("walk", "[iter][walk]")
             REQUIRE(*i == 8);
         }
     }
+
+    SECTION("write")
+    {
+        veci vi = {3, 7, 9};
+        auto w = iter::walker<veci::iterator, veci::size_type>(vi.begin(), vi.end());
+        for (auto v : w)
+        {
+            *v *= 2;
+        }
+
+        REQUIRE(vi[0] == 6);
+        REQUIRE(vi[1] == 14);
+        REQUIRE(vi[2] == 18);
+    }
 }
