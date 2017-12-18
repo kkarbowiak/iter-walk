@@ -122,6 +122,12 @@ namespace iter
     {
         return walk(std::begin(container), std::end(container), container.size());
     }
+
+    template<class Container>
+    auto rwalk(Container & container) -> decltype(walk(container.rbegin(), container.rend(), container.size()))
+    {
+        return walk(container.rbegin(), container.rend(), container.size());
+    }
 }
 
 #endif /* ITER_WALK_H */
