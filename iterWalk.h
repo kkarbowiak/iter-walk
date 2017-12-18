@@ -28,22 +28,22 @@ namespace iter
                             {
                             }
 
-                            typename Iterator::reference operator*() const
+                            auto operator*() const -> typename Iterator::reference
                             {
                                 return *m_current;
                             }
 
-                            bool is_first() const
+                            auto is_first() const -> bool
                             {
                                 return (m_current == m_first);
                             }
 
-                            bool is_last() const
+                            auto is_last() const -> bool
                             {
                                 return (std::next(m_current) == m_last);
                             }
 
-                            Size get_index() const
+                            auto get_index() const -> Size
                             {
                                 return m_index;
                             }
@@ -64,17 +64,17 @@ namespace iter
                     {
                     }
 
-                    bool operator!=(walk_iterator const & other) const
+                    auto operator!=(walk_iterator const & other) const -> bool
                     {
                         return (m_current != other.m_current);
                     }
 
-                    walk_proxy operator*() const
+                    auto operator*() const -> walk_proxy
                     {
                         return walk_proxy(m_first, m_last, m_current, m_index);
                     }
 
-                    walk_iterator & operator++()
+                    auto operator++() -> walk_iterator &
                     {
                         ++m_current;
                         ++m_index;
@@ -96,12 +96,12 @@ namespace iter
             {
             }
 
-            walk_iterator begin() const
+            auto begin() const -> walk_iterator
             {
                 return walk_iterator(m_first, m_last);
             }
 
-            walk_iterator end() const
+            auto end() const -> walk_iterator
             {
                 return walk_iterator(m_last, m_last);
             }
@@ -112,7 +112,7 @@ namespace iter
     };
 
     template<class Iterator, class Size>
-    walker<Iterator, Size> walk(Iterator first, Iterator last, Size /* unused */)
+    auto walk(Iterator first, Iterator last, Size /* unused */) -> walker<Iterator, Size>
     {
         return walker<Iterator, Size>(first, last);
     }
