@@ -49,10 +49,10 @@ namespace iter
                             }
 
                         private:
-                            Iterator m_first;
-                            Iterator m_last;
-                            Iterator m_current;
-                            Size m_index;
+                            Iterator const m_first;
+                            Iterator const m_last;
+                            Iterator const m_current;
+                            Size const m_index;
                     };
 
                 public:
@@ -83,8 +83,8 @@ namespace iter
                     }
 
                 private:
-                    Iterator m_first;
-                    Iterator m_last;
+                    Iterator const m_first;
+                    Iterator const m_last;
                     Iterator m_current;
                     Size m_index;
             };
@@ -107,8 +107,8 @@ namespace iter
             }
 
         private:
-            Iterator m_first;
-            Iterator m_last;
+            Iterator const m_first;
+            Iterator const m_last;
     };
 
     template<class Iterator, class Size>
