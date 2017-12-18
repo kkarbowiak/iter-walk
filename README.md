@@ -2,7 +2,7 @@
 
 C++11 introduced the so called range-based for loops, which allow iterating over whole container using nice and short syntax:
 
-```
+```c++
 std::vector<int> vec = {1, 2, 3, 4};
 for (auto & v : vec)
 {
@@ -20,7 +20,7 @@ The main utility is the `walk` template function. It accepts a reference to a co
 
 This may sound complicated, but the usage is quite simple. The loop from first paragraph can be rewritten as:
 
-```
+```c++
 std::vector<int> vec = {1, 2, 3, 4};
 for (auto i : iter::walk(vec))  // notice call to iter::walk
 {
@@ -29,7 +29,7 @@ for (auto i : iter::walk(vec))  // notice call to iter::walk
 ```
 
 Above, `i` represents the proxy object that has the following interface:
-```
+```c++
 class walk_proxy
 {
     public:
@@ -42,7 +42,7 @@ class walk_proxy
 
 A simple example showcasing the abilities of this library:
 
-```
+```c++
 #include "iterWalk.h"
 
 #include <vector>
