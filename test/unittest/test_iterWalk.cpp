@@ -15,7 +15,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("forward")
         {
-            auto w = iter::walker<veci::const_iterator, veci::size_type>(vi.begin(), vi.end());
+            auto w = iter::walk(vi);
             auto b = w.begin();
             auto e = w.end();
 
@@ -24,7 +24,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("reverse")
         {
-            auto w = iter::walker<veci::const_reverse_iterator, veci::size_type>(vi.rbegin(), vi.rend());
+            auto w = iter::rwalk(vi);
             auto b = w.begin();
             auto e = w.end();
 
@@ -38,7 +38,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("forward")
         {
-            auto w = iter::walker<veci::const_iterator, veci::size_type>(vi.begin(), vi.end());
+            auto w = iter::walk(vi);
             auto b = w.begin();
             auto e = w.end();
             auto i = *b;
@@ -52,7 +52,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("reverse")
         {
-            auto w = iter::walker<veci::const_reverse_iterator, veci::size_type>(vi.rbegin(), vi.rend());
+            auto w = iter::rwalk(vi);
             auto b = w.begin();
             auto e = w.end();
             auto i = *b;
@@ -71,7 +71,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("forward")
         {
-            auto w = iter::walker<veci::const_iterator, veci::size_type>(vi.begin(), vi.end());
+            auto w = iter::walk(vi);
             auto b = w.begin();
 
             {
@@ -112,7 +112,7 @@ TEST_CASE("walk", "[iter][walk]")
 
         SECTION("reverse")
         {
-            auto w = iter::walker<veci::const_reverse_iterator, veci::size_type>(vi.rbegin(), vi.rend());
+            auto w = iter::rwalk(vi);
             auto b = w.begin();
 
             {
@@ -155,7 +155,7 @@ TEST_CASE("walk", "[iter][walk]")
     SECTION("write")
     {
         veci vi = {3, 7, 9};
-        auto w = iter::walker<veci::iterator, veci::size_type>(vi.begin(), vi.end());
+        auto w = iter::walk(vi);
         for (auto v : w)
         {
             *v *= 2;
