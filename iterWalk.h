@@ -30,7 +30,7 @@ namespace iter
 
                             auto operator*() const -> typename Iterator::reference
                             {
-                                return *m_current;
+                                return get();
                             }
 
                             auto is_first() const -> bool
@@ -51,6 +51,11 @@ namespace iter
                             auto get_index() const -> Size
                             {
                                 return m_index;
+                            }
+
+                            auto get_iterator() const -> Iterator
+                            {
+                                return m_current;
                             }
 
                         private:
