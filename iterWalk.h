@@ -43,6 +43,11 @@ namespace iter
                                 return (std::next(m_current) == m_last);
                             }
 
+                            auto get() const -> typename Iterator::reference
+                            {
+                                return *m_current;
+                            }
+
                             auto get_index() const -> Size
                             {
                                 return m_index;
