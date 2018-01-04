@@ -33,12 +33,12 @@ Above, `i` represents the proxy object that has the following interface:
 class walk_proxy
 {
     public:
-        typename Iterator::reference operator*() const  // access to the underlying value
-        typename Iterator::reference get() const  // access to the underlying value
-        bool is_first() const  // returns true for first iterated-over value
-        bool is_last() const  // returns true for last iterated-over value
-        Size get_index() const  // returns index of iterated-over value
-        Iterator get_iterator() const  // returns underlying iterator
+        typename Iterator::reference operator*() const;  // access to the underlying value
+        typename Iterator::reference get() const;  // access to the underlying value
+        bool is_first() const;  // returns true for first iterated-over value
+        bool is_last() const;  // returns true for last iterated-over value
+        Size get_index() const;  // returns index of iterated-over value
+        Iterator get_iterator() const;  // returns underlying iterator
 }
 ```
 
