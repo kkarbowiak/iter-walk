@@ -45,7 +45,7 @@ class walk_proxy
 A simple example showcasing the abilities of this library:
 
 ```c++
-#include "iterWalk.h"
+#include "iter_walk.h"
 
 #include <vector>
 #include <string>
