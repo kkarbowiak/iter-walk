@@ -4,7 +4,7 @@
 #include <set>
 #include <iostream>
 
-#include "iterWalk.h"
+#include "iter_walk.h"
 
 
 template<class C>
